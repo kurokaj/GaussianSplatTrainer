@@ -1,0 +1,31 @@
+scene_name: house_001
+input_type: images # images/video
+input_path: ../../data/raw/house_001 # /workspace/data/...
+workspace_dir: ../../runs/house_001 # /workspace/runs/...
+
+image_prep:
+  frame_stride: 3 # 1/2/3/5...
+  resize_max: 1920 # null/1280/1920/2560...
+  copy_mode: symlink # symlink/copy
+  ffmpeg_binary: ffmpeg
+
+colmap:
+  binary: ../../opt/colmap/bin/colmap # /workspace/opt/... or plain "colmap" if it is on PATH
+  mode: global # global/incremental
+  matcher: exhaustive # exhaustive/sequential/spatial/transitive
+  camera_model: OPENCV # OPENCV/SIMPLE_RADIAL/PINHOLE
+  single_camera: true # true/false
+  use_gpu: true # true/false
+  use_view_graph_calibrator: true # true/false
+  feature_extractor_options:
+    SiftExtraction.max_image_size: 3200 # 1600/2400/3200/4096...
+  matcher_options: {}
+  mapper_options: {}
+  global_mapper_options: {}
+  view_graph_calibrator_options: {}
+  model_converter_options: {}
+
+gsplat:
+  enabled: false # true/false
+  command: [] # e.g. ["python", "-m", "gsplat_runner", "--images", "{images_dir}"]
+  env: {}

@@ -1,0 +1,8 @@
+extends: base.yaml
+
+scene_name: house_incremental_001
+workspace_dir: ../../runs/house_incremental_001
+
+colmap:
+  mode: incremental
+  use_view_graph_calibrator: false
