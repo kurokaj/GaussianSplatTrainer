@@ -1,3 +1,58 @@
+# ==========================================
+# NON-PYTHON REQUIREMENTS (IMPORTANT)
+# ==========================================
+
+# GPU runtime:
+#   CUDA: 12.x (e.g. 12.6 from Verda runtime)
+
+# PyTorch:
+#   Must match CUDA 12.x (install manually with cu126 index)
+
+# COLMAP:
+#   Built from source (installed to /workspace/opt/colmap-install)
+
+# System packages (only during build):
+#   cmake, ninja, boost, ceres, qt, etc.
+
+# Storage:
+#   Block volume mounted at /mnt/GaussianSplatVolume
+#   /workspace → symlink to volume
+
+# ==========================================
+
+# === Core Python utilities ===
 PyYAML>=6.0
 Pillow>=10.0
 matplotlib>=3.8
+tqdm>=4.66
+rich>=13.7
+
+# === Scientific / data ===
+numpy>=1.26
+
+# === Visualization / point clouds ===
+open3d>=0.18
+plotly>=5.20
+
+# === Image processing ===
+opencv-python>=4.9
+
+# === Jupyter / dev ===
+jupyterlab>=4.1
+ipykernel>=6.29
+
+# === Core ML stack (CUDA-aligned, install separately!) ===
+# IMPORTANT:
+# Do NOT install torch from default pip index.
+# Must be installed with CUDA 12.x wheel manually:
+#
+# pip install torch torchvision torchaudio \
+#   --index-url https://download.pytorch.org/whl/cu126
+#
+# (Do NOT include torch here to avoid pulling CUDA 13 accidentally)
+
+# === COLMAP Python bindings ===
+pycolmap-cuda12==4.0.3
+
+# === Gaussian splatting ===
+gsplat
